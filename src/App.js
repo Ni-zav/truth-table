@@ -38,12 +38,18 @@ function App() {
   return (
     <div className="container">
       <h1>Truth Table Generator</h1>
-      <Tutorial />
-      <ExpressionInput />
-      <ErrorMessage />
-      <TruthTable />
+      <div className="left-panel">
+        <Tutorial />
+        <ExpressionInput />
+      </div>
+      <div className="right-panel">
+        <div className="export-buttons-container">
+          <ExportButtons />
+        </div>
+        <TruthTable />
+      </div>
       <ExpressionTree />
-      <ExportButtons />
+      <footer>&copy; Nizav</footer>
     </div>
   );
 }

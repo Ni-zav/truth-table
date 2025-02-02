@@ -21,7 +21,7 @@ const parseExpression = (expression) => {
       variables.add(node.name);
     }
     if (node.type === 'CallExpression') {
-      if (node.callee && node.callee.name) {
+      if (node.callee && node.callee.name && !['forall', 'exists'].includes(node.callee.name)) {
         variables.add(node.callee.name);
       }
       node.arguments.forEach(arg => extractVariables(arg));
@@ -29,7 +29,6 @@ const parseExpression = (expression) => {
     if (node.left) extractVariables(node.left);
     if (node.right) extractVariables(node.right);
     if (node.argument) extractVariables(node.argument);
-    if (node.argument2) extractVariables(node.argument2);
   };
 
   extractVariables(tree);
@@ -66,7 +65,8 @@ const evaluateExpression = (tree, assignments) => {
           }
           const varNameForall = varNodeForall.name;
           // Assuming binary variables for simplicity
-          return Object.values(assignments).every(value => {
+          const uniqueValues = [false, true];
+          return uniqueValues.every(value => {
             assignments[varNameForall] = value;
             const result = evaluateExpression(exprNodeForall, assignments);
             assignments[varNameForall] = undefined; // Reset
@@ -82,7 +82,7 @@ const evaluateExpression = (tree, assignments) => {
           }
           const varNameExists = varNodeExists.name;
           // Assuming binary variables for simplicity
-          return Object.values(assignments).some(value => {
+          return [false, true].some(value => {
             assignments[varNameExists] = value;
             const result = evaluateExpression(exprNodeExists, assignments);
             assignments[varNameExists] = undefined; // Reset

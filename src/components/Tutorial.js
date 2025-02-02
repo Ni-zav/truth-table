@@ -17,7 +17,7 @@ const Tutorial = () => (
       <li>~ : NOT</li>
       <li>&& : AND</li>
       <li>|| : OR</li>
-      <li>--&gt; : IMPLIES</li>
+      <li>-&gt; : IMPLIES</li>
       <li>&lt;-&gt; : EQUIVALENT</li>
       <li>forall(variable, expression) : ∀</li>
       <li>exists(variable, expression) : ∃</li>

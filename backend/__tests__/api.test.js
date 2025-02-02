@@ -18,13 +18,14 @@ app.post('/api/generate', (req, res) => {
 });
 
 describe('POST /api/generate', () => {
-  it('should generate truth table for valid expression', async () => {
+  it('should generate truth table for valid expression with quantifiers', async () => {
     const response = await request(app)
       .post('/api/generate')
-      .send({ expression: 'A && B' });
+      .send({ expression: 'forall(x, (P(x) -> Q(x)))' });
     expect(response.statusCode).toBe(200);
-    expect(response.body.truthTable.length).toBe(4);
-    expect(response.body.variables).toEqual(['A', 'B']);
+    // Assuming free variables are P and Q
+    expect(response.body.variables).toEqual(['x', 'P', 'Q']);
+    expect(response.body.truthTable.length).toBe(8); // 3 variables: 2^3
   });
 
   it('should return error for invalid expression', async () => {

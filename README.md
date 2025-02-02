@@ -1,6 +1,33 @@
-# Getting Started with Create React App
+# Truth Table Generator
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Skills & Technologies
+- Frontend: React.js, Redux, JavaScript, HTML5, CSS3, D3.js
+- Backend: Node.js, Express.js, REST API
+- Tools & Libraries: NPM, Jest, Axios, Styled Components
+- Development: Git, Full Stack Development, Responsive Design
+- Features: State Management, API Integration, PDF Generation
+
+## About The Project
+Truth Table Generator is a web application that helps users generate truth tables from logical expressions. It features a dynamic expression tree visualization, PDF export capabilities, and real-time truth table generation.
+
+## Setup Instructions
+
+1. Clone the repository
+2. Install dependencies:
+   ```bash
+   npm install         # Install frontend dependencies
+   cd backend
+   npm install         # Install backend dependencies
+   ```
+3. Start the servers:
+   ```bash
+   # In backend directory
+   npm start          # Starts backend server on port 5000
+
+   # In root directory
+   npm start          # Starts frontend server on port 3000
+   ```
+4. Open [http://localhost:3000](http://localhost:3000) to view the application
 
 ## Available Scripts
 
