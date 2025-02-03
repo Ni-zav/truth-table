@@ -1,4 +1,3 @@
-// backend/logic.js
 const jsep = require('jsep');
 
 // Add custom binary operators

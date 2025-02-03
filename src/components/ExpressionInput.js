@@ -1,4 +1,3 @@
-// src/components/ExpressionInput.js
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { setExpression } from '../redux/actions';

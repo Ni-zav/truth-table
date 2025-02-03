@@ -1,4 +1,3 @@
-// src/components/ExpressionTree.js
 import React, { useEffect, useRef } from 'react';
 import { useSelector } from 'react-redux';
 import * as d3 from 'd3';

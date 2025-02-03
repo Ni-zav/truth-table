@@ -1,4 +1,3 @@
-// src/components/Tutorial.js
 import React from 'react';
 
 const samples = [
