@@ -3,8 +3,6 @@ import { useDispatch } from 'react-redux';
 import { setExpression } from '../redux/actions';
 import { Light as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { docco } from 'react-syntax-highlighter/dist/esm/styles/hljs';
-import './ExpressionInput.css';
-
 const ExpressionInput = () => {
   const [input, setInput] = useState('');
   const dispatch = useDispatch();
