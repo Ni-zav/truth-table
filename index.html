@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="light" />
+    <meta name="theme-color" content="#f8f7f3" />
+    <meta name="description" content="Truth tables, beautifully simple. Type a logical expression. Get every answer." />
+    <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
+    <title>Truth Table — a little logic, beautifully clear</title>
+  </head>
+  <body>
+    <div id="app">
+      <header class="masthead">
+        <a class="wordmark" href="./" aria-label="Truth Table home">truth<span class="period">.</span>table</a>
+        <a class="github-link" href="https://github.com/Ni-zav/truth-table" target="_blank" rel="noopener noreferrer" aria-label="GitHub source code" title="GitHub source code">↗ <span>source</span></a>
+      </header>
+
+      <main class="sheet">
+        <div class="section-index" aria-hidden="true">01 <span class="index-rule"></span></div>
+        <h1>Truth table<span class="stop">.</span></h1>
+        <div class="editor-frame">
+          <label class="visually-hidden" for="expression">Logical expression</label>
+          <input id="expression" type="text" value="A ∧ (B ∨ ¬C)" maxlength="241" inputmode="text" autocomplete="off" autocapitalize="characters" spellcheck="false" aria-describedby="syntax-error" />
+          <div class="operator-bar" role="group" aria-label="Insert logical operator">
+            <div class="operator-list">
+              <button class="operator" type="button" data-insert="¬" aria-label="Not" title="Not">¬</button>
+              <button class="operator" type="button" data-insert="∧" aria-label="And" title="And">∧</button>
+              <button class="operator" type="button" data-insert="∨" aria-label="Or" title="Or">∨</button>
+              <button class="operator" type="button" data-insert="⊕" aria-label="Exclusive or" title="Exclusive or">⊕</button>
+              <button class="operator" type="button" data-insert="→" aria-label="Implies" title="Implies">→</button>
+              <button class="operator" type="button" data-insert="↔" aria-label="If and only if" title="If and only if">↔</button>
+              <button class="operator" type="button" data-insert="(" aria-label="Open parenthesis" title="Open parenthesis">(</button>
+              <button class="operator" type="button" data-insert=")" aria-label="Close parenthesis" title="Close parenthesis">)</button>
+            </div>
+            <button type="button" class="clear-button" id="clear" title="Clear expression" aria-label="Clear expression">×</button>
+          </div>
+        </div>
+        <p id="syntax-error" class="syntax-error" role="status" aria-live="polite"></p>
+
+        <div class="table-section">
+          <div class="table-heading">
+            <div class="section-index" aria-hidden="true">02 <span class="index-rule"></span></div>
+            <div class="table-actions">
+              <button type="button" id="steps" class="quiet-button toggle" aria-pressed="false" title="Show intermediate expressions">Steps <span id="steps-state" class="toggle-indicator">○</span></button>
+              <button type="button" id="digits" class="quiet-button" aria-pressed="false" title="Switch between T/F and 1/0">T/F</button>
+              <button type="button" id="copy" class="quiet-button" title="Copy table as TSV">Copy <span aria-hidden="true">↗</span></button>
+              <button type="button" id="csv" class="quiet-button" title="Download CSV">CSV <span aria-hidden="true">↓</span></button>
+              <button type="button" id="share" class="quiet-button" title="Copy shareable link">Link <span aria-hidden="true">↗</span></button>
+            </div>
+          </div>
+          <div class="table-surface" id="table-surface">
+            <table id="truth-table" aria-label="Truth table">
+              <thead></thead>
+              <tbody></tbody>
+            </table>
+          </div>
+          <div class="table-footer"><span id="row-count" aria-live="polite"></span><span id="feedback" role="status" aria-live="polite"></span></div>
+        </div>
+      </main>
+      <footer class="page-footer"><span>∴</span><span>Ni-zav / 2026</span></footer>
+    </div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
