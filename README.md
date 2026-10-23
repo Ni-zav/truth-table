@@ -30,7 +30,7 @@ Single-letter variables A–Z (case-insensitive), up to eight variables and 256 
 
 Precedence, highest to lowest: NOT, AND/NAND, XOR/XNOR, OR/NOR, implication, equivalence. Implication is right-associative. Use parentheses for grouping. Alphabetical variables; assignments sorted all true to all false. Intermediate steps are optional.
 
-Copy TSV, export CSV, and share URL query links. No requests, tracking, remote fonts, login, or storage of private expressions.
+Copy TSV, export CSV, and share URL query links. No analytics, tracking, external fonts, login, or application backend. Evaluation happens locally. The usual static files are fetched from the hosting provider. **A shared link contains your expression in its URL** and may be visible to the hosting provider, browser history, and anyone you share it with; avoid sharing sensitive expressions.
 
 ## Deploy
 
