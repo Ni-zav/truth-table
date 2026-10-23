@@ -55,4 +55,20 @@ describe('Boolean expressions', () => {
     expect(exportDelimited(table, ',')).toContain('"A","B","A → B"\r\n');
     expect(exportDelimited(table, '\t', true)).toContain('1\t0\t0');
   });
+  it('keeps formatted parentheses semantically equivalent to the AST', () => {
+    for (const source of ['(A -> B) -> C', 'A -> (B -> C)', 'A ↑ (B ∧ C)', 'A ↓ (B ∨ C)', '¬(A ∨ B)']) {
+      const first = buildTruthTable(parse(source));
+      const reformatted = buildTruthTable(parse(format(parse(source))));
+      expect(reformatted.rows.map(row => row.outputs[0])).toEqual(first.rows.map(row => row.outputs[0]));
+    }
+  });
+
+  it('obeys De Morgan and enumerates the eight-variable boundary', () => {
+    const left = buildTruthTable(parse('¬(A ∧ B)'));
+    const right = buildTruthTable(parse('¬A ∨ ¬B'));
+    expect(left.rows.map(row => row.outputs[0])).toEqual(right.rows.map(row => row.outputs[0]));
+    expect(buildTruthTable(parse('A & B & C & D & E & F & G & H')).rows).toHaveLength(256);
+    expect(() => buildTruthTable(parse('A & B & C & D & E & F & G & H & I'))).toThrow(/at most eight/);
+  });
+
 });
