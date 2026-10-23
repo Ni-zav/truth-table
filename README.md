@@ -32,6 +32,22 @@ Precedence, highest to lowest: NOT, AND/NAND, XOR/XNOR, OR/NOR, implication, equ
 
 Copy TSV, export CSV, and share URL query links. No analytics, tracking, external fonts, login, or application backend. Evaluation happens locally. The usual static files are fetched from the hosting provider. **A shared link contains your expression in its URL** and may be visible to the hosting provider, browser history, and anyone you share it with; avoid sharing sensitive expressions.
 
-## Deploy
+## Cloudflare Workers
 
-The GitHub Actions Pages workflow runs checks and builds on `main`. Enable **Settings → Pages → Build and deployment → GitHub Actions**. Then the app is published at https://ni-zav.github.io/truth-table/.
+The repository is configured for **Cloudflare Workers Static Assets**, not Cloudflare's Vite framework integration. `wrangler.jsonc` binds the Worker name `truth-table` to the production `dist/` directory. No Worker script, plugin, or server is necessary.
+
+For the existing Git-connected Cloudflare Worker, use:
+
+| Setting | Value |
+| --- | --- |
+| Production branch | `main` |
+| Root directory | repository root |
+| Build command | `npm run build` |
+| Deploy command | `npx wrangler deploy` |
+| Build output directory | `dist` |
+
+The build command runs once in Cloudflare Builds. Wrangler deploy uploads the already-built static assets; **do not put another build in the Cloudflare deploy command**. Wrangler is a pinned local dev dependency, not dynamically installed during deployment. The Worker name in Cloudflare and `wrangler.jsonc` must match.
+
+Local preview of Cloudflare routing: `npm run preview:workers`. To build and deploy yourself after authenticating with Cloudflare: `npm run deploy:workers`. Pull-request CI verifies typechecks, tests, production build, and Wrangler configuration using `wrangler deploy --dry-run` without uploading anything or needing deployment credentials.
+
+The application is intended for the Worker's root URL, normally `https://truth-table.<your-account-subdomain>.workers.dev/` or a mapped custom domain. Avoid GitHub Pages' `/truth-table/` asset base.

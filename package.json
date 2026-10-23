@@ -8,12 +8,15 @@
     "build": "tsc --noEmit && vite build",
     "preview": "vite preview --host 127.0.0.1",
     "test": "vitest run",
-    "check": "tsc --noEmit && vitest run"
+    "check": "tsc --noEmit && vitest run",
+    "deploy:workers": "npm run build && wrangler deploy",
+    "preview:workers": "npm run build && wrangler dev"
   },
   "devDependencies": {
     "typescript": "7.0.2",
     "vite": "8.3.4",
-    "vitest": "5.0.5"
+    "vitest": "5.0.5",
+    "wrangler": "4.152.0"
   },
   "engines": {
     "node": ">=22.12.0"

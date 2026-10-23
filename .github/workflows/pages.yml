@@ -1,4 +1,4 @@
-name: Verify & Pages
+name: Verify
 
 on:
   push:
@@ -19,27 +19,5 @@ jobs:
           node-version: '22'
       - run: npm install --no-audit --no-fund
       - run: npm run check
-      - run: npm run build -- --mode pages
-      - if: github.event_name != 'pull_request'
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: ./dist
-
-  deploy:
-    needs: verify
-    if: github.event_name != 'pull_request'
-    runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      pages: write
-      id-token: write
-    concurrency:
-      group: github-pages
-      cancel-in-progress: false
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    steps:
-      - uses: actions/configure-pages@v5
-      - id: deployment
-        uses: actions/deploy-pages@v4
+      - run: npm run build
+      - run: npx --no-install wrangler deploy --dry-run
