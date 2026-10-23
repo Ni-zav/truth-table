@@ -17,8 +17,7 @@
       </header>
 
       <main class="sheet">
-        <div class="section-index" aria-hidden="true">01 <span class="index-rule"></span></div>
-        <h1>Truth table<span class="stop">.</span></h1>
+        <h1 class="visually-hidden">Truth table</h1>
         <div class="editor-frame">
           <label class="visually-hidden" for="expression">Logical expression</label>
           <input id="expression" type="text" value="A ∧ (B ∨ ¬C)" maxlength="241" inputmode="text" autocomplete="off" autocapitalize="characters" spellcheck="false" aria-describedby="syntax-error" />
@@ -40,7 +39,6 @@
 
         <div class="table-section">
           <div class="table-heading">
-            <div class="section-index" aria-hidden="true">02 <span class="index-rule"></span></div>
             <div class="table-actions">
               <button type="button" id="steps" class="quiet-button toggle" aria-pressed="false" title="Show intermediate expressions">Steps <span id="steps-state" class="toggle-indicator">○</span></button>
               <button type="button" id="digits" class="quiet-button" aria-pressed="false" title="Switch between T/F and 1/0">T/F</button>
