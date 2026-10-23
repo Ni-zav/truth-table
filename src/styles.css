@@ -22,14 +22,11 @@ a { color: inherit; text-decoration: none; }
 #app { min-height: 100svh; display: flex; flex-direction: column; }
 .masthead { width: min(100% - 72px, 1190px); margin: 0 auto; height: 104px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--rule); }
 .wordmark { font-size: 25px; letter-spacing: -.06em; font-weight: 700; }
-.period, .stop { color: var(--accent); }
+.period { color: var(--accent); }
 .github-link { font-size: 15px; display: inline-flex; gap: 8px; align-items: center; transition: color .2s ease, transform .2s ease; }
 .github-link span { font-style: italic; }
 .github-link:hover { color: var(--accent); transform: translate(1px,-1px); }
-.sheet { width: min(100% - 72px, 1090px); margin: 0 auto; flex: 1; padding: 84px 0 78px; }
-.section-index { font: 13px/1.4 var(--math); font-variant-numeric: tabular-nums; letter-spacing: .04em; color: var(--ink-muted); display: flex; align-items: center; gap: 12px; white-space: nowrap; }
-.index-rule { width: 31px; height: 1px; background: var(--rule-strong); display: inline-block; }
-h1 { font-size: clamp(58px, 8vw, 108px); line-height: 1.13; font-weight: 400; letter-spacing: -.062em; margin: 20px 0 43px; }
+.sheet { width: min(100% - 72px, 1090px); margin: 0 auto; flex: 1; padding: 36px 0 56px; }
 .editor-frame { border-bottom: 2px solid var(--rule-strong); transition: border-color .2s ease; }
 .editor-frame:focus-within { border-color: var(--accent); }
 #expression { width: 100%; padding: 16px 4px 27px; border: 0; outline: 0; color: var(--ink); background: transparent; font: 400 clamp(25px, 4.4vw, 46px)/1.4 var(--math); letter-spacing: -.035em; min-width: 0; caret-color: var(--accent); }
@@ -40,9 +37,10 @@ h1 { font-size: clamp(58px, 8vw, 108px); line-height: 1.13; font-weight: 400; le
 .operator, .clear-button { display: grid; place-items: center; background: transparent; color: var(--ink-muted); border: 0; min-width: 42px; height: 40px; font: 26px/1 var(--math); border-radius: 3px; transition: color .18s ease, background .18s ease, transform .18s ease; }
 .operator:hover, .clear-button:hover { background: #eae7df; color: var(--ink); transform: translateY(-1px); }
 .clear-button { font-family: var(--serif); font-size: 25px; }
-.syntax-error { color: #a33c2b; font-size: 15px; min-height: 26px; margin: 9px 0 0; }
-.table-section { margin-top: 80px; }
-.table-heading { display: flex; justify-content: space-between; align-items: center; gap: 20px; padding-bottom: 27px; }
+.syntax-error { color: #a33c2b; font-size: 15px; margin: 9px 0 0; }
+.syntax-error:empty { display: none; }
+.table-section { margin-top: 38px; }
+.table-heading { display: flex; justify-content: flex-end; align-items: center; padding-bottom: 15px; }
 .table-actions { display: flex; gap: 22px; align-items: center; flex-wrap: wrap; justify-content: flex-end; }
 .quiet-button { border: 0; border-bottom: 1px solid transparent; background: transparent; color: var(--ink-muted); padding: 5px 0; font: 15px/1.2 var(--serif); transition: color .2s ease, border-color .2s ease; white-space: nowrap; }
 .quiet-button:hover, .quiet-button[aria-pressed="true"] { color: var(--ink); border-color: var(--ink); }
@@ -71,12 +69,11 @@ h1 { font-size: clamp(58px, 8vw, 108px); line-height: 1.13; font-weight: 400; le
   .masthead, .sheet, .page-footer { width: min(100% - 36px, 100%); }
   .masthead { height: 76px; }
   .wordmark { font-size: 22px; }
-  .sheet { padding-top: 60px; padding-bottom: 46px; }
-  h1 { font-size: clamp(53px, 12vw, 72px); margin-bottom: 36px; }
+  .sheet { padding-top: 24px; padding-bottom: 36px; }
   #expression { font-size: clamp(24px, 5.8vw, 34px); padding-bottom: 22px; }
   .operator { min-width: 34px; height: 36px; font-size: 22px; }
-  .table-section { margin-top: 56px; }
-  .table-heading { align-items: flex-start; flex-direction: column; gap: 18px; }
+  .table-section { margin-top: 28px; }
+  .table-heading { justify-content: flex-start; }
   .table-actions { gap: 17px; justify-content: flex-start; }
   .quiet-button { font-size: 14px; }
   #truth-table thead th, #truth-table tbody td { padding: 14px 19px; font-size: 19px; }
