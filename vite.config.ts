@@ -1,6 +1,5 @@
 import { defineConfig } from 'vite';
 
-export default defineConfig(({ mode }) => ({
-  base: mode === 'pages' ? '/truth-table/' : '/',
+export default defineConfig({
   build: { target: 'es2022' },
-}));
+});
