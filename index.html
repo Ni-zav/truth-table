@@ -20,7 +20,7 @@
         <h1 class="visually-hidden">Truth table</h1>
         <div class="editor-frame">
           <label class="visually-hidden" for="expression">Logical expression</label>
-          <input id="expression" type="text" value="A ∧ (B ∨ ¬C)" maxlength="241" inputmode="text" autocomplete="off" autocapitalize="characters" spellcheck="false" aria-describedby="syntax-error" />
+          <input id="expression" type="text" value="A ∧ (B ∨ ¬C)" maxlength="240" placeholder="A ∧ B" inputmode="text" autocomplete="off" autocapitalize="characters" spellcheck="false" aria-describedby="syntax-error" />
           <div class="operator-bar" role="group" aria-label="Insert logical operator">
             <div class="operator-list">
               <button class="operator" type="button" data-insert="¬" aria-label="Not" title="Not">¬</button>
@@ -40,20 +40,20 @@
         <div class="table-section">
           <div class="table-heading">
             <div class="table-actions">
-              <button type="button" id="steps" class="quiet-button toggle" aria-pressed="false" title="Show intermediate expressions">Steps <span id="steps-state" class="toggle-indicator">○</span></button>
+              <button type="button" id="steps" class="quiet-button toggle" aria-controls="truth-table" aria-pressed="false" title="Show intermediate expressions">Steps <span id="steps-state" class="toggle-indicator">○</span></button>
               <button type="button" id="digits" class="quiet-button" aria-pressed="false" title="Switch between T/F and 1/0">T/F</button>
-              <button type="button" id="copy" class="quiet-button" title="Copy table as TSV">Copy <span aria-hidden="true">↗</span></button>
+              <button type="button" id="copy" class="quiet-button" title="Copy table · Ctrl/⌘ + Enter">Copy <span aria-hidden="true">↗</span></button>
               <button type="button" id="csv" class="quiet-button" title="Download CSV">CSV <span aria-hidden="true">↓</span></button>
               <button type="button" id="share" class="quiet-button" title="Copy shareable link">Link <span aria-hidden="true">↗</span></button>
             </div>
           </div>
-          <div class="table-surface" id="table-surface">
+          <div class="table-surface" id="table-surface" role="region" aria-label="Scrollable truth table" tabindex="0">
             <table id="truth-table" aria-label="Truth table">
               <thead></thead>
               <tbody></tbody>
             </table>
           </div>
-          <div class="table-footer"><span id="row-count" aria-live="polite"></span><span id="feedback" role="status" aria-live="polite"></span></div>
+          <div class="table-footer"><span id="row-count" aria-live="polite"></span><span id="feedback" class="visually-hidden" role="status" aria-live="polite"></span></div>
         </div>
       </main>
       <footer class="page-footer"><span>∴</span><span>Ni-zav / 2026</span></footer>
