@@ -90,6 +90,7 @@ function clearTable(symbol = '∅'): void {
   surface.classList.remove('has-result', 'is-pending');
   surface.dataset.empty = symbol;
   rowCount.textContent = '';
+  table.setAttribute('aria-label', 'Truth table');
   surface.removeAttribute('aria-busy');
 }
 
@@ -139,7 +140,8 @@ function updateTable(next: TruthTable, label: string): void {
     surface.scrollTop = scrollTop;
   }
 
-  rowCount.textContent = '2' + String(next.variables.length).split('').map(char => superscript[char] ?? char).join('') + ' = ' + next.rows.length;
+  const count = '2' + String(next.variables.length).split('').map(char => superscript[char] ?? char).join('') + ' = ' + next.rows.length;
+  if (rowCount.textContent !== count) rowCount.textContent = count;
   surface.classList.add('has-result');
   surface.classList.remove('is-pending');
   surface.dataset.empty = '';
@@ -153,9 +155,11 @@ function render(): void {
   if (pendingError !== undefined) clearTimeout(pendingError);
   pendingError = undefined;
   stepsButton.setAttribute('aria-pressed', String(showSteps));
-  stepsState.textContent = showSteps ? '●' : '○';
+  const indicator = showSteps ? '●' : '○';
+  if (stepsState.textContent !== indicator) stepsState.textContent = indicator;
   digitsButton.setAttribute('aria-pressed', String(digits));
-  digitsButton.textContent = digits ? '1/0' : 'T/F';
+  const toggleText = digits ? '1/0' : 'T/F';
+  if (digitsButton.textContent !== toggleText) digitsButton.textContent = toggleText;
   clearButton.disabled = editor.value.length === 0;
   error.textContent = '';
   editor.removeAttribute('aria-invalid');
@@ -172,6 +176,7 @@ function render(): void {
       // Briefly retain a dimmed last result while the user finishes typing.
       // After a pause, remove it rather than presenting stale data as current.
       currentTable = null;
+      rowCount.textContent = '';
       surface.classList.add('is-pending');
       surface.setAttribute('aria-busy', 'true');
       const message = cause instanceof Error ? cause.message : 'Invalid expression';
